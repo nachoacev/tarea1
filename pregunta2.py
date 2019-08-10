@@ -6,8 +6,12 @@ import matplotlib.pyplot as plt
 
 def function(u,phi):            # funcion integrando
 
-    denominador = math.cos(phi-(u**2))-math.cos(phi)
-    return u/math.sqrt(denominador)
+    denominador = np.cos(phi-(u**2))-np.cos(phi)
+    return u/np.sqrt(denominador)
+
+phi = np.sqrt(np.pi/2)
+u = np.flip(np.linspace(phi,0,1000,endpoint=False))
+plt.plot(u, function(u,phi) , label = 'integrando')
 
 def trapecio(phi,N):            # aproximacion por trapecio, N entero
 
@@ -103,6 +107,7 @@ B = np.asanyarray(integrales2[1])
 diff1 = (2*math.sqrt(2)/math.pi)*np.abs(A-I)
 diff2 = (2*math.sqrt(2)/math.pi)*np.abs(B-I)
 
+plt.slf()
 plt.plot(phi, diff1, color='g', label="diff trapecio")
 plt.plot(phi, diff2, color='b', label="diff quad")
 plt.legend(loc='lower left')
